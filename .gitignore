@@ -1,0 +1,8 @@
+/wikivenv/*
+.vscode/
+__pycache__/
+*.swp
+*.swo
+.DS_Store
+images/*
+!images/.gitkeep

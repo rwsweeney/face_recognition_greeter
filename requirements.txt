@@ -1,0 +1,7 @@
+pymediawiki
+boto3
+cmake
+black
+face_recognition
+opencv-contrib-python
+numpy
