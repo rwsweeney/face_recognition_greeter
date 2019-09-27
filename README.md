@@ -3,4 +3,11 @@ Train a ML model to recognize my spouse and I when we get home, and then have it
 
 ### Setup
 
-In the images folder create a directory with the name of the person you want the model to recognize. Start by adding one cropped photo of their face to this newly created directory. In polly.py change your profile to match the one you have configured in ~/.aws/credentials if on mac/linux.
+**Images:**
+Add a directory in the images folder with the name of each person you want the model to recognize. Crop a photo of the face of the person, and place one single photo in the directory as a .jpg.
+
+**AWS Polly:**
+In polly.py replace profile_name="personal-aws" with the name of your AWS access keys. On linux and mac these can be found in ~/.aws/credentials
+
+**Configure a video stream**
+I've used the free android app, IP Webcam, and in main.py you can set the rtsp end point for streaming video to the greeter.
