@@ -22,8 +22,17 @@ def timed_greeting(name):
     return "Something went wrong. Your code sucks"
 
 
+# This function prepares text to greet the person with a random fact from wikipedia, and then sends it off to AWS polly to be synthesized. Opener works on mac, but hasn't been tested elsewhere.
 def play_and_reco(name):
     text = timed_greeting(name) + random_fact()
     sample_audio = synthesize_input(text)
     opener = "open"
     subprocess.call([opener, sample_audio])
+
+
+def alarm_mode():
+    pass
+
+
+def email_owner():
+    pass
