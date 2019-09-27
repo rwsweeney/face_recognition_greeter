@@ -1,25 +1,40 @@
 import face_recognition
 import cv2
+import os
 import numpy as np
 from functions import play_and_reco
 from multiprocessing import Process
 
-# Create a for loop to load training data
 
+# Crawl through the images folder to identify faces and train the model
+def train_model():
+    base_dir = os.path.dirname(os.path.realpath(__file__))
+    dir_image = os.path.join(base_dir, "images/")
+
+    kfnc = 0
+    known_face_names = []
+    known_face_encodings = []
+
+    for (root,dirs,files) in os.walk(dir_image, topdown=True):
+        for dir in dirs:
+            known_face_names.append(dir)
+
+        for file in files:
+            if '.jpg' in file:
+                image_path = os.path.join(dir_image, known_face_names[kfnc], file)
+                image = face_recognition.load_image_file(image_path)
+                face_encoding = face_recognition.face_encodings(image)[0]
+                known_face_encodings.append(face_encoding)
+                kfnc = kfnc + 1
+                break
+
+    return known_face_names, known_face_encodings
 
 def start_video(ip):
 
     video_capture = cv2.VideoCapture(ip)
 
-    # Loading training photo for n people.
-    someone_image = face_recognition.load_image_file("someone.jpg")
-    someone_face_encoding = face_recognition.face_encodings(someone_image)[0]
-
-    someone2_image = face_recognition.load_image_file("someone2.jpg")
-    someone2_face_encoding = face_recognition.face_encodings(someone2_image)[0]
-
-    known_face_encodings = [someone_face_encoding, someone2_face_encoding]
-    known_face_names = ["someone", "someone2"]
+    known_face_names, known_face_encodings = train_model()
 
     # Initialize some variables
     face_locations = []
