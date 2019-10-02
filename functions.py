@@ -5,7 +5,6 @@ import subprocess
 
 # Add a 6 hour counter for seen_rachel, seen_sarah, etc. Once the 6 hour timer goes down to 0 set seen_rachel to false.
 
-
 def timed_greeting(name):
     ctime = datetime.datetime.now()
     ctime = ctime.hour
@@ -29,10 +28,28 @@ def play_and_reco(name):
     opener = "open"
     subprocess.call([opener, sample_audio])
 
+# Create a class for the alarm with needed functions
+class Alarm:
 
-def alarm_mode():
-    pass
+    def alarm_mode():
+        # if name = unknown:
+        #    unknown_count = unknown_count + 1
+        # if unknown_count > 30 & rachel/sarah counter != 1:
+        #    Start the alarm beeping process
+        # In main function it could say 
+        # if unknown_count > 30 & not rachel_seen or sarah_seen:
+        #     start_alarm():
+        # 
+
+        pass
+
+    def deactivate():
+        pass
+
+    def active():
+        # Connect this to an alexa skill with a... flask listener?
+        pass
 
 
-def email_owner():
-    pass
+    def email_owner():
+        pass

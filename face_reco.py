@@ -29,7 +29,6 @@ def train_model():
 
     return known_face_names, known_face_encodings
 
-
 def start_video(ip, app_function=None):
 
     video_capture = cv2.VideoCapture(ip)
@@ -81,12 +80,14 @@ def start_video(ip, app_function=None):
                     if app_function:
                         app_function()
 
+                # instantiate alarm class
+
                 # If it recognizes someone start a separate process on another core to greet them.
                 # How to keep while unseen: in face_reco portion of code?
-                # while unseen:
-                #     p = Process(target=play_and_reco, args=(name,))
-                #     p.start()
-                #     unseen = False
+                while unseen:
+                    p = Process(target=play_and_reco, args=(name,))
+                    p.start()
+                    unseen = False
 
                 face_names.append(name)
 
