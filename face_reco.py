@@ -10,14 +10,19 @@ def train_model():
     base_dir = os.path.dirname(os.path.realpath(__file__))
     image_dir = os.path.join(base_dir, "images/")
 
+    # Known face names counter
     kfnc = 0
+
     known_face_names = []
     known_face_encodings = []
 
     for (root, dirs, files) in os.walk(image_dir, topdown=True):
+        
+        # Creates a list of names to try to recognize based on directory name
         for dir in dirs:
             known_face_names.append(dir)
 
+        # Pulls an image from the named directory, and encodes the face in the image.
         for file in files:
             if ".jpg" in file:
                 image_path = os.path.join(image_dir, known_face_names[kfnc], file)
@@ -40,9 +45,11 @@ def start_video(ip, app_function=None):
     face_encodings = []
     face_names = []
     process_this_frame = True
+    #rachel_unseen = True
+    #sarah_unseen = True
     unseen = True
 
-    # Starts video loop
+    # Starts video loop to process each frame
     while True:
         ret, frame = video_capture.read()
 
@@ -76,18 +83,18 @@ def start_video(ip, app_function=None):
                 if matches[best_match_index]:
                     name = known_face_names[best_match_index]
 
-                    # This gets evaluated every single frame. Possible work around?
-                    if app_function:
-                        app_function()
+                if app_function:
+                    if app_function == "wikipedia":
 
-                # instantiate alarm class
-
-                # If it recognizes someone start a separate process on another core to greet them.
-                # How to keep while unseen: in face_reco portion of code?
-                while unseen:
-                    p = Process(target=play_and_reco, args=(name,))
-                    p.start()
-                    unseen = False
+                        # If it recognizes someone start a separate process on another core to greet them.
+                        # How to keep while unseen: in face_reco portion of code?
+                        while unseen:
+                            p = Process(target=play_and_reco, args=(name,))
+                            p.start()
+                            unseen = False
+                    
+                    if app_function == "alarm":
+                        # instantiate alarm class
 
                 face_names.append(name)
 
