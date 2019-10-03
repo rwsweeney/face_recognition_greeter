@@ -1,5 +1,7 @@
 # Goal:
-Train a ML model to recognize my spouse and I when we get home, and then have it greet us with a fun fact. This involved writing a function to query the wikipedia API, and then sending the results to AWS polly to synthesize the text. 
+Train a ML model to recognize my spouse and I when we get home, and then have it greet us with a fun fact. This involved writing a function to query the wikipedia API, and then sending the results to AWS polly to synthesize the text.
+
+I also want this project to be as dynamic as possible, so that regardless of how many people the model is trained on it will have the same ability to uniquely identify and greet them without requiring any hard coding to do so.
 
 ### Setup
 
