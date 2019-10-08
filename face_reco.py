@@ -95,6 +95,7 @@ def start_video(ip, app_function=None):
                     
                     if app_function == "alarm":
                         # instantiate alarm class
+                        pass
 
                 face_names.append(name)
 
