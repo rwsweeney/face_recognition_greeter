@@ -5,5 +5,5 @@ __pycache__/
 *.swp
 *.swo
 .DS_Store
-images/*
+/face_recognition_greeter_app/images/*
 !images/.gitkeep
