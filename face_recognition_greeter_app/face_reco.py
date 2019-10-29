@@ -73,7 +73,7 @@ def start_video(ip, app_function=None):
                 matches = face_recognition.compare_faces(
                     known_face_encodings, face_encoding
                 )
-                name = "Stranger danger"
+                name = "unknown"
 
                 # Or instead, use the known face with the smallest distance to the new face
                 face_distances = face_recognition.face_distance(
