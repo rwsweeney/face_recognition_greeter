@@ -1,7 +1,7 @@
 /wikivenv/*
 /venv/*
 .vscode/
-__pycache__/
+face_recognition_greeter_app/__pycache__/
 *.swp
 *.swo
 .DS_Store
