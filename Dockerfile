@@ -1,7 +1,7 @@
-FROM        python3:3
+FROM        python:3.6
 
-COPY        ./face_recognition_greeter_app /opt/app
+COPY        ./face_recognition_greeter_app ./conf /opt/app/
 
-RUN         pip3 install -r /opt/app/requirements.txt
-
-ENTRYPOINT  ["python3 /opt/app/main.py"]
+RUN         pip install -r /opt/app/requirements.txt \
+            && mkdir -p ~/.aws \
+            && cp /opt/app/config /opt/app/credentials ~/.aws/
