@@ -1,9 +1,10 @@
-/wikivenv/*
 /venv/*
+/conf/*
 .vscode/
 face_recognition_greeter_app/__pycache__/
 *.swp
 *.swo
 .DS_Store
 /face_recognition_greeter_app/images/*
-!images/.gitkeep
+!/face_recognition_greeter_app/images/.gitkeep
+!/conf/.gitkeep
